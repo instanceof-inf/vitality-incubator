@@ -1,9 +1,6 @@
 package com.johan.blignaut.entelect.vitalityincubator.task1;
 
-import org.springframework.stereotype.Component;
-
-@Component
-public class HelloWorldBean {
+public class HelloWorld {
 
     public String getMessage() {
         return "Hello World";

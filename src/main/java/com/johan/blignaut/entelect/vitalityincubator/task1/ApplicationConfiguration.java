@@ -1,18 +1,13 @@
 package com.johan.blignaut.entelect.vitalityincubator.task1;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+@Configuration
 public class ApplicationConfiguration {
 
-    private HelloWorldBean helloWorldBean;
-
-    public ApplicationConfiguration(HelloWorldBean helloWorldBean) {
-        this.helloWorldBean = helloWorldBean;
-    }
-
-    public String getHelloWorldBean() {
-        return this.helloWorldBean.getMessage();
+    @Bean
+    public HelloWorld helloWorld() {
+        return new HelloWorld();
     }
 }
