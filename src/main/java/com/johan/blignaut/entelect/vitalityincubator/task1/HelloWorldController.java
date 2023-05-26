@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloWorldController {
 
-    @Autowired
     private HelloWorld helloWorld;
+
+    @Autowired
+    public HelloWorldController(HelloWorld helloWorld) {
+        this.helloWorld = helloWorld;
+    }
 
     @GetMapping("/hello-world")
     public String helloWorld() {
