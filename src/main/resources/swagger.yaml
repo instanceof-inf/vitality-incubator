@@ -1,0 +1,62 @@
+swagger: '2.0' #version of Swagger
+info: # High Level information of API
+  description: Vitality Incubator HelloWorld API Demo #Give the description of API 
+  version: 1.0.0 #API version
+  title: Vitality Incubator HelloWorld Demo # API title
+  license: #Swagger license info
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+basePath: /v1 #Basepath when there are multiple versions of API running
+tags: # Tag information for each API operation. Multiple tags for multiple API operation
+  - name: helloworld #Tag name
+    description: Everything about your Employee #Tag description of API operation
+schemes:
+  - http #security schemes
+paths:
+  '/hello-world': #Request Mapping path of REST API
+    get: #Request method type, GET,POST etc.
+      tags: # Refer to created tag above
+        - helloworld
+      summary: Return success message #Summary 
+      description: Returns a 200 ok with a success message #Description of API operation
+      operationId: helloWorld #Method name
+      produces:
+        - application/json #Response content type
+      responses: # API response
+        '200': #Successful status code
+          description: successful operation #Successful status description
+          schema:
+            $ref: '#/definitions/HelloWorld' #Response object details
+  '/message': #Request Mapping path of REST API
+    post: #Request method type, GET,POST etc.
+      tags: # Refer to created tag above
+        - helloworld
+      summary: Return success message #Summary 
+      description: Returns a 200 ok with a success message #Description of API operation
+      operationId: message #Method name
+      produces:
+        - text/plain #Response content type
+      consumes:
+        - text/plain
+      parameters:
+        - in: body
+          name: message
+          required: true
+          schema:
+            type: string
+      responses: # API response
+        '200': #Successful status code
+          description: successful operation #Successful status description
+          schema:
+            type: string #Response object details
+        '400': #Unsuccessful response code
+          description: Invalid message supplied #Unsuccessful response description
+definitions: # Object definition
+  HelloWorld: #Employee Object
+    type: object
+    properties: #Object properties
+      message: #Id attribute
+        type: string #Data type
+        description: Message #Data type description
+    xml:
+      name: helloworld #xml root element when returning xml
