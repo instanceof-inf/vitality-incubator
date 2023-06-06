@@ -15,6 +15,12 @@
 	<description>Vitality Incubator tasks in Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>
+		<swagger-annotations-version>1.5.21</swagger-annotations-version>
+		<jersey-version>2.29.1</jersey-version>
+		<jackson-version>2.11.4</jackson-version>
+		<jodatime-version>2.7</jodatime-version>
+		<maven-plugin-version>1.0.0</maven-plugin-version>
+		<junit-version>4.13.1</junit-version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -34,6 +40,24 @@
 		</dependency>
 
 		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.swagger</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>1.5.21</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit-dep</artifactId>
+			<version>4.8.2</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
@@ -45,6 +69,68 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>io.swagger</groupId>
+				<artifactId>swagger-codegen-maven-plugin</artifactId>
+				<version>2.3.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/swagger.yaml</inputSpec>
+							<language>spring</language>
+
+							<!-- pass any necessary config options -->
+							<configOptions>
+								<interfaceOnly>true</interfaceOnly>
+								<dateLibrary>joda</dateLibrary>
+							</configOptions>
+
+							<output>${project.build.directory}/generated-sources</output>
+							<apiPackage>com.johan.blignaut.entelect.vitalityincubator.api</apiPackage>
+							<modelPackage>com.johan.blignaut.entelect.vitalityincubator.model</modelPackage>
+							<invokerPackage>com.johan.blignaut.entelect.vitalityincubator</invokerPackage>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+					<forceJavacCompilerUse>true</forceJavacCompilerUse>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!--
+                    To have the generated code included in the application build process we need to make the files
+                    visible to the maven compiler plugin. We use the build-helper-maven-plugin configured to use our generated sources.
+                -->
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>
+									TODO
+								</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

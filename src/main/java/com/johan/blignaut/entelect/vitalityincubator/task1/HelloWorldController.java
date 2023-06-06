@@ -1,28 +1,22 @@
 package com.johan.blignaut.entelect.vitalityincubator.task1;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.johan.blignaut.entelect.vitalityincubator.api.HelloWorldApi;
+import com.johan.blignaut.entelect.vitalityincubator.api.MessageApi;
+import com.johan.blignaut.entelect.vitalityincubator.model.HelloWorld;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class HelloWorldController {
+public class HelloWorldController implements HelloWorldApi, MessageApi {
 
-    private HelloWorld helloWorld;
-
-    @Autowired
-    public HelloWorldController(HelloWorld helloWorld) {
-        this.helloWorld = helloWorld;
+    @Override
+    public ResponseEntity<HelloWorld> helloWorld() {
+        HelloWorld helloWorld = new HelloWorld();
+        helloWorld.setMessage("Hello World");
+        return ResponseEntity.ok(helloWorld);
     }
 
-    @GetMapping("/hello-world")
-    public String helloWorld() {
-        return helloWorld.getMessage();
-    }
-
-    @PostMapping("/message")
-    public String showMessage(@RequestBody String message) {
-        return message;
+    @Override
+    public ResponseEntity<String> message(String message) {
+        return ResponseEntity.ok(message);
     }
 }
