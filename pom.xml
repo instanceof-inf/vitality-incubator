@@ -52,6 +52,54 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>retrofit</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>converter-gson</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.squareup.retrofit2</groupId>
+			<artifactId>converter-scalars</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.gsonfire</groupId>
+			<artifactId>gson-fire</artifactId>
+			<version>1.8.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.squareup.okhttp</groupId>
+			<artifactId>okhttp</artifactId>
+			<version>2.7.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.squareup.okhttp</groupId>
+			<artifactId>logging-interceptor</artifactId>
+			<version>2.7.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.oltu.oauth2</groupId>
+			<artifactId>org.apache.oltu.oauth2.client</artifactId>
+			<version>0.31</version>
+		</dependency>
+
+		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit-dep</artifactId>
 			<version>4.8.2</version>
@@ -76,6 +124,32 @@
 				<version>2.3.1</version>
 				<executions>
 					<execution>
+						<id>generate-rest-client</id>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+						<configuration>
+							<inputSpec>${project.basedir}/src/main/resources/geodb-swagger.yaml</inputSpec>
+							<language>java</language>
+							<library>okhttp-gson</library>
+							<output>${project.build.directory}/generated-sources</output>
+
+							<apiPackage>com.johan.blignaut.entelect.vitalityincubator.restclient.api</apiPackage>
+							<modelPackage>com.johan.blignaut.entelect.vitalityincubator.restclient.model</modelPackage>
+							<invokerPackage>com.johan.blignaut.entelect.vitalityincubator.restclient</invokerPackage>
+
+							<generateApiTests>false</generateApiTests>
+							<generateModelTests>false</generateModelTests>
+							<generateApiDocumentation>false</generateApiDocumentation>
+							<generateModelDocumentation>false</generateModelDocumentation>
+							<configOptions>
+								<dateLibrary>java11</dateLibrary>
+								<sourceFolder>restclient</sourceFolder>
+							</configOptions>
+						</configuration>
+					</execution>
+					<execution>
+						<id>generate-rest-server</id>
 						<goals>
 							<goal>generate</goal>
 						</goals>
@@ -86,13 +160,19 @@
 							<!-- pass any necessary config options -->
 							<configOptions>
 								<interfaceOnly>true</interfaceOnly>
-								<dateLibrary>joda</dateLibrary>
+								<dateLibrary>java11</dateLibrary>
+								<sourceFolder>restserver</sourceFolder>
 							</configOptions>
 
+							<generateApiTests>false</generateApiTests>
+							<generateModelTests>false</generateModelTests>
+							<generateApiDocumentation>false</generateApiDocumentation>
+							<generateModelDocumentation>false</generateModelDocumentation>
+
 							<output>${project.build.directory}/generated-sources</output>
-							<apiPackage>com.johan.blignaut.entelect.vitalityincubator.api</apiPackage>
-							<modelPackage>com.johan.blignaut.entelect.vitalityincubator.model</modelPackage>
-							<invokerPackage>com.johan.blignaut.entelect.vitalityincubator</invokerPackage>
+							<apiPackage>com.johan.blignaut.entelect.vitalityincubator.restserver.api</apiPackage>
+							<modelPackage>com.johan.blignaut.entelect.vitalityincubator.restserver.model</modelPackage>
+							<invokerPackage>com.johan.blignaut.entelect.vitalityincubator.restserver</invokerPackage>
 						</configuration>
 					</execution>
 				</executions>
@@ -125,7 +205,7 @@
 						<configuration>
 							<sources>
 								<source>
-									TODO
+									${project.build.directory}/generated-sources
 								</source>
 							</sources>
 						</configuration>

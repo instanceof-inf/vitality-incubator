@@ -1,12 +1,12 @@
 swagger: '2.0' #version of Swagger
 info: # High Level information of API
-  description: Vitality Incubator API Demo #Give the description of API
+  description: Vitality Incubator API Demo #Give the description of API 
   version: 1.0.0 #API version
   title: Vitality Incubator Demo # API title
   license: #Swagger license info
     name: Apache 2.0
     url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
-host: localhost
+host: geodb-free-service.wirefreethought.com
 basePath: /v1 #Basepath when there are multiple versions of API running
 tags: # Tag information for each API operation. Multiple tags for multiple API operation
   - name: geodb #Tag name
@@ -27,9 +27,9 @@ paths:
         '200': #Successful status code
           description: successful operation #Successful status description
           schema:
-            $ref: '#/definitions/GeoDBServer' #Response object details
+            $ref: '#/definitions/GeoDBClient' #Response object details
 definitions: # Object definition
-  CityServer:
+  CityClient:
     type: "object"
     properties:
       id:
@@ -62,14 +62,14 @@ definitions: # Object definition
         format: "int64"
     xml:
       name: "City"
-  LinkServer:
+  LinkClient:
     type: "object"
     properties:
       rel:
         type: "string"
       href:
         type: "string"
-  MetaDataServer:
+  MetaDataClient:
     type: "object"
     properties:
       currentOffset:
@@ -78,21 +78,21 @@ definitions: # Object definition
       totalCount:
         type: "integer"
         format: "int64"
-  GeoDBServer: #Employee Object
+  GeoDBClient: #Employee Object
     type: "object"
     required:
-      - "name"
-      - "photoUrls"
+    - "name"
+    - "photoUrls"
     properties:
       data:
         type: "array"
         items:
-          $ref: "#/definitions/CityServer"
+          $ref: "#/definitions/CityClient"
       links:
         type: "array"
         items:
-          $ref: "#/definitions/LinkServer"
+          $ref: "#/definitions/LinkClient"
       metadata:
-        $ref: "#/definitions/MetaDataServer"
+        $ref: "#/definitions/MetaDataClient"
     xml:
       name: "GeoDB"
