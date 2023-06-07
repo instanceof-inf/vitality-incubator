@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class GeoDBController implements GeoApi {
 
-    private GeodbApi geodbApi;
+    private GeoDBMappingHelper geoDBMappingHelper;
 
     @Autowired
-    public GeoDBController(GeodbApi geodbApi) {
-        this.geodbApi = geodbApi;
+    public GeoDBController(GeoDBMappingHelper geoDBMappingHelper) {
+        this.geoDBMappingHelper = geoDBMappingHelper;
     }
 
     @Override
     public ResponseEntity<GeoDBServer> getPlaces() throws ApiException {
-        GeoDBServer geoDBServer = new GeoDBMappingHelper(geodbApi).mapGeoDB();
+        GeoDBServer geoDBServer = this.geoDBMappingHelper.mapGeoDB();
         return ResponseEntity.ok(geoDBServer);
     }
 }

@@ -9,14 +9,18 @@ import com.johan.blignaut.entelect.vitalityincubator.restclient.api.GeodbApi;
 import com.johan.blignaut.entelect.vitalityincubator.restclient.model.CityClient;
 import com.johan.blignaut.entelect.vitalityincubator.restserver.model.LinkServer;
 import com.johan.blignaut.entelect.vitalityincubator.restclient.model.LinkClient;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class GeoDBMappingHelper {
 
     private final GeodbApi geodbApi;
 
+    @Autowired
     public GeoDBMappingHelper(GeodbApi geodbApi) {
         this.geodbApi = geodbApi;
     }
