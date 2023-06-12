@@ -1,63 +1,50 @@
 package com.johan.blignaut.entelect.vitalityincubator.task2.helpers;
 
-import com.johan.blignaut.entelect.vitalityincubator.restserver.model.GeoDBServer;
-import com.johan.blignaut.entelect.vitalityincubator.restclient.model.GeoDBClient;
-import com.johan.blignaut.entelect.vitalityincubator.restserver.model.MetaDataServer;
-import com.johan.blignaut.entelect.vitalityincubator.restserver.model.CityServer;
-import com.johan.blignaut.entelect.vitalityincubator.restclient.ApiException;
 import com.johan.blignaut.entelect.vitalityincubator.restclient.api.GeodbApi;
-import com.johan.blignaut.entelect.vitalityincubator.restclient.model.CityClient;
+import com.johan.blignaut.entelect.vitalityincubator.restclient.model.GeoDBClient;
+import com.johan.blignaut.entelect.vitalityincubator.restserver.model.CityServer;
+import com.johan.blignaut.entelect.vitalityincubator.restserver.model.GeoDBServer;
 import com.johan.blignaut.entelect.vitalityincubator.restserver.model.LinkServer;
-import com.johan.blignaut.entelect.vitalityincubator.restclient.model.LinkClient;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.johan.blignaut.entelect.vitalityincubator.task2.service.GeoDBMappingService;
 import org.springframework.stereotype.Component;
+import retrofit2.Call;
+import retrofit2.Response;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class GeoDBMappingHelper {
 
     private final GeodbApi geodbApi;
+    private final GeoDBMappingService geoDBMappingService;
 
-    @Autowired
-    public GeoDBMappingHelper(GeodbApi geodbApi) {
+    public GeoDBMappingHelper(GeodbApi geodbApi, GeoDBMappingService geoDBMappingService) {
         this.geodbApi = geodbApi;
+        this.geoDBMappingService = geoDBMappingService;
     }
 
-    public GeoDBServer mapGeoDB() throws ApiException {
+    public GeoDBServer mapClientToServerGeoDB() throws IOException {
         GeoDBServer geoDBServer = new GeoDBServer();
-        GeoDBClient geodbClient = this.geodbApi.getPlaces();
-        List<CityServer> citiesList = new ArrayList<>();
-        for (CityClient cityClient : geodbClient.getData()) {
-            CityServer cityServer = new CityServer();
-            cityServer.setId(cityClient.getId());
-            cityServer.setWikiDataId(cityClient.getWikiDataId());
-            cityServer.setType(cityClient.getType());
-            cityServer.setName(cityClient.getName());
-            cityServer.setCountry(cityClient.getCountry());
-            cityServer.setCountryCode(cityClient.getCountryCode());
-            cityServer.setRegion(cityClient.getRegion());
-            cityServer.setRegionCode(cityClient.getRegionCode());
-            cityServer.setRegionWdId(cityClient.getRegionWdId());
-            cityServer.setLatitude(cityClient.getLatitude());
-            cityServer.setLongitude(cityClient.getLongitude());
-            cityServer.setPopulation(cityClient.getPopulation());
-            citiesList.add(cityServer);
-        }
+        Call<GeoDBClient> call = geodbApi.getPlaces();
+        Response<GeoDBClient> response = call.execute();
+        GeoDBClient geodbClient = response.body();
+        List<CityServer> citiesList = geodbClient.getData()
+                .stream()
+                .map(geoDBMappingService::mapClientToServerCity)
+                .collect(Collectors.toList());
         geoDBServer.setData(citiesList);
-        List<LinkServer> linksList = new ArrayList<>();
-        for (LinkClient linkClient : geodbClient.getLinks()) {
-            LinkServer linkServer = new LinkServer();
-            linkServer.setRel(linkClient.getRel());
-            linkServer.setHref(linkClient.getHref());
-            linksList.add(linkServer);
-        }
+        List<LinkServer> linksList = geodbClient.getLinks()
+                .stream()
+                .map(geoDBMappingService::mapClientToServerLink)
+                .collect(Collectors.toList());
         geoDBServer.setLinks(linksList);
-        MetaDataServer metaDataServer = new MetaDataServer();
-        metaDataServer.setCurrentOffset(geodbClient.getMetadata().getCurrentOffset());
-        metaDataServer.setTotalCount(geodbClient.getMetadata().getTotalCount());
-        geoDBServer.setMetadata(metaDataServer);
+        geoDBServer.setMetadata(
+                geoDBMappingService.mapClientToServerMetaData(
+                        geodbClient.getMetadata()
+                )
+        );
         return geoDBServer;
     }
 }
