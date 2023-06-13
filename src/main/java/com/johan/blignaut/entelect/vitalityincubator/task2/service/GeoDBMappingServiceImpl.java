@@ -36,8 +36,7 @@ public class GeoDBMappingServiceImpl implements GeoDBMappingService {
         return geoDBServer;
     }
 
-    @Override
-    public CityServer mapClientToServerCity(CityClient cityClient) {
+    private CityServer mapClientToServerCity(CityClient cityClient) {
         CityServer cityServer = new CityServer();
         cityServer.setId(cityClient.getId());
         cityServer.setWikiDataId(cityClient.getWikiDataId());
@@ -54,16 +53,14 @@ public class GeoDBMappingServiceImpl implements GeoDBMappingService {
         return cityServer;
     }
 
-    @Override
-    public LinkServer mapClientToServerLink(LinkClient linkClient) {
+    private LinkServer mapClientToServerLink(LinkClient linkClient) {
         LinkServer linkServer = new LinkServer();
         linkServer.setRel(linkServer.getRel());
         linkServer.setHref(linkClient.getHref());
         return linkServer;
     }
 
-    @Override
-    public MetaDataServer mapClientToServerMetaData(MetaDataClient metaDataClient) {
+    private MetaDataServer mapClientToServerMetaData(MetaDataClient metaDataClient) {
         MetaDataServer metaDataServer = new MetaDataServer();
         metaDataServer.setCurrentOffset(metaDataClient.getCurrentOffset());
         metaDataServer.setTotalCount(metaDataClient.getTotalCount());
