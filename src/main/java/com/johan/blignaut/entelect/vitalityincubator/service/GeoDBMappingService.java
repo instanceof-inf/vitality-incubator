@@ -1,4 +1,4 @@
-package com.johan.blignaut.entelect.vitalityincubator.task2.service;
+package com.johan.blignaut.entelect.vitalityincubator.service;
 
 
 import com.johan.blignaut.entelect.vitalityincubator.restclient.model.GeoDBClient;
@@ -6,5 +6,5 @@ import com.johan.blignaut.entelect.vitalityincubator.restserver.model.GeoDBServe
 
 public interface GeoDBMappingService {
 
-    GeoDBServer mapClientToServerGeoDB(GeoDBClient geoDBClient);
+    GeoDBServer mapClientToServerGeoDB(GeoDBClient geoDBClient, String filterByName);
 }

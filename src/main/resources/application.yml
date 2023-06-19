@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: "deployed"
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: deployed
+name: deployed-YAML
+environment: deployed
+itemsperpage: 10
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: test
+name: test-YAML
+environment: testing
+itemsperpage: 5

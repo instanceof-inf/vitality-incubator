@@ -1,4 +1,4 @@
-package com.johan.blignaut.entelect.vitalityincubator.task2;
+package com.johan.blignaut.entelect.vitalityincubator;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.johan.blignaut.entelect.vitalityincubator.restclient.api.GeodbApi;
