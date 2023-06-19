@@ -23,7 +23,7 @@ public class GeoDBMappingHelper {
     private final GeoDBMappingService geoDBMappingService;
 
     @Value("${itemsperpage}")
-    private int itemsPerPage = 7;
+    private int itemsPerPage;
 
     private static final String PLACES = "places";
 
