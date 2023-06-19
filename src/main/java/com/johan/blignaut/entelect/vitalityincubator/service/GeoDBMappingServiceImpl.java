@@ -20,13 +20,13 @@ public class GeoDBMappingServiceImpl implements GeoDBMappingService {
     public GeoDBServer mapClientToServerGeoDB(GeoDBClient geoDBClient, String filterByName) {
         GeoDBServer geoDBServer = new GeoDBServer();
         List<CityServer> citiesList = geoDBClient.getData()
-                .stream()
+                .parallelStream()
                 .filter(item -> filterByName == null || !filterByName.isEmpty() && item.getName().contains(filterByName))
                 .map(this::mapClientToServerCity)
                 .collect(Collectors.toList());
         geoDBServer.setData(citiesList);
         List<LinkServer> linksList = geoDBClient.getLinks()
-                .stream()
+                .parallelStream()
                 .map(this::mapClientToServerLink)
                 .collect(Collectors.toList());
         geoDBServer.setLinks(linksList);
