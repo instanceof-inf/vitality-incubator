@@ -1,4 +1,4 @@
-package com.johan.blignaut.entelect.vitalityincubator.task2.exception;
+package com.johan.blignaut.entelect.vitalityincubator.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

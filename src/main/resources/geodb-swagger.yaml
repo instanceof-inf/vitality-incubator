@@ -21,6 +21,12 @@ paths:
       summary: Return cities object #Summary
       description: Returns a 200 ok with a success message #Description of API operation
       operationId: getPlaces #Method name
+      parameters:
+        - in: query
+          name: limit
+          type: integer
+          description: The number of items to return per page
+          required: false
       produces:
         - application/json #Response content type
       responses: # API response
