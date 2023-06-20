@@ -8,6 +8,10 @@ import org.springframework.context.annotation.Configuration;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+
 @Configuration
 public class ApplicationConfig {
 
@@ -21,5 +25,10 @@ public class ApplicationConfig {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(JacksonConverterFactory.create(new ObjectMapper()))
                 .build().create(GeodbApi.class);
+    }
+
+    @Bean
+    public ThreadPoolExecutor executor() {
+        return (ThreadPoolExecutor) Executors.newCachedThreadPool();
     }
 }
