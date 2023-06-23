@@ -1,0 +1,162 @@
+{
+  "data": [
+    {
+      "id": 659,
+      "wikiDataId": "Q1519",
+      "type": "CITY",
+      "name": "Abu Dhabi",
+      "country": "United Arab Emirates",
+      "countryCode": "AE",
+      "region": "Emirate of Abu Dhabi",
+      "regionCode": "AZ",
+      "regionWdId": "Q187712",
+      "latitude": 24.451111111,
+      "longitude": 54.396944444,
+      "population": 1483000
+    },
+    {
+      "id": 638,
+      "wikiDataId": "Q530171",
+      "type": "CITY",
+      "name": "Ajman",
+      "country": "United Arab Emirates",
+      "countryCode": "AE",
+      "region": "Emirate of Ajman",
+      "regionCode": "AJ",
+      "regionWdId": "Q159477",
+      "latitude": 25.399444444,
+      "longitude": 55.479722222,
+      "population": 490035
+    },
+    {
+      "id": 644,
+      "wikiDataId": "Q234600",
+      "type": "CITY",
+      "name": "Al Ain",
+      "country": "United Arab Emirates",
+      "countryCode": "AE",
+      "region": "Emirate of Abu Dhabi",
+      "regionCode": "AZ",
+      "regionWdId": "Q187712",
+      "latitude": 24.2075,
+      "longitude": 55.744722222,
+      "population": 766936
+    },
+    {
+      "id": 3704017,
+      "wikiDataId": "Q3696182",
+      "type": "CITY",
+      "name": "Dibba Al-Fujairah",
+      "country": "United Arab Emirates",
+      "countryCode": "AE",
+      "region": "Emirate of Fujairah",
+      "regionCode": "FU",
+      "regionWdId": "Q4091",
+      "latitude": 25.616667,
+      "longitude": 56.266667,
+      "population": 41017
+    },
+    {
+      "id": 3519123,
+      "wikiDataId": "Q612",
+      "type": "CITY",
+      "name": "Dubai",
+      "country": "United Arab Emirates",
+      "countryCode": "AE",
+      "region": "Emirate of Dubai",
+      "regionCode": "DU",
+      "regionWdId": "Q613",
+      "latitude": 25.269722222,
+      "longitude": 55.309444444,
+      "population": 3564931
+    },
+    {
+      "id": 900,
+      "wikiDataId": "Q289693",
+      "type": "CITY",
+      "name": "Sharjah",
+      "country": "United Arab Emirates",
+      "countryCode": "AE",
+      "region": "Emirate of Sharjah",
+      "regionCode": "SH",
+      "regionWdId": "Q188810",
+      "latitude": 25.3575,
+      "longitude": 55.391944444,
+      "population": 1247749
+    },
+    {
+      "id": 3218278,
+      "wikiDataId": "Q2376379",
+      "type": "ADM2",
+      "name": "Andarab District",
+      "country": "Afghanistan",
+      "countryCode": "AF",
+      "region": "Baghlan",
+      "regionCode": "BGL",
+      "regionWdId": "Q170309",
+      "latitude": 35.628333333,
+      "longitude": 69.177222222,
+      "population": 120642
+    },
+    {
+      "id": 3514312,
+      "wikiDataId": "Q1920624",
+      "type": "ADM2",
+      "name": "Arghandab District",
+      "country": "Afghanistan",
+      "countryCode": "AF",
+      "region": "Kandahar",
+      "regionCode": "KAN",
+      "regionWdId": "Q173808",
+      "latitude": 31.654722222,
+      "longitude": 65.649444444,
+      "population": 54000
+    },
+    {
+      "id": 92,
+      "wikiDataId": "Q685808",
+      "type": "CITY",
+      "name": "Asadabad",
+      "country": "Afghanistan",
+      "countryCode": "AF",
+      "region": "Kunar",
+      "regionCode": "KNR",
+      "regionWdId": "Q188147",
+      "latitude": 34.874166666,
+      "longitude": 71.152777777,
+      "population": 48400
+    },
+    {
+      "id": 134,
+      "wikiDataId": "Q732879",
+      "type": "CITY",
+      "name": "Baghlan",
+      "country": "Afghanistan",
+      "countryCode": "AF",
+      "region": "Baghlan",
+      "regionCode": "BGL",
+      "regionWdId": "Q170309",
+      "latitude": 36.132777777,
+      "longitude": 68.7,
+      "population": 73031
+    }
+  ],
+  "links": [
+    {
+      "rel": null,
+      "href": "/v1/geo/places?offset=0&limit=10"
+    },
+    {
+      "rel": null,
+      "href": "/v1/geo/places?offset=10&limit=10"
+    },
+    {
+      "rel": null,
+      "href": "/v1/geo/places?offset=27570&limit=10"
+    }
+  ],
+  "metadata": {
+    "currentOffset": 0,
+    "totalCount": 27574
+  }
+}

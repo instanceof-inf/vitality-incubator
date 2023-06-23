@@ -1,8 +1,8 @@
 package com.johan.blignaut.entelect.vitalityincubator;
 
+import com.johan.blignaut.entelect.vitalityincubator.helpers.GeoDBMappingHelper;
 import com.johan.blignaut.entelect.vitalityincubator.restserver.api.GeoApi;
 import com.johan.blignaut.entelect.vitalityincubator.restserver.model.GeoDBServer;
-import com.johan.blignaut.entelect.vitalityincubator.helpers.GeoDBMappingHelper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
