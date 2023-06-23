@@ -26,7 +26,7 @@ public class GeoDBMappingHelper {
     private GeodbApi geodbApi;
     private GeoDBMappingService geoDBMappingService;
 
-    @Value("${itemsperpage}")
+    @Value("${itemsperpage:10}")
     private int itemsPerPage;
 
     private static final String PLACES = "places";

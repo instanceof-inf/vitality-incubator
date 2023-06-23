@@ -1,0 +1,50 @@
+{
+  "data": [
+    {
+      "id": 644,
+      "wikiDataId": "Q234600",
+      "type": "CITY",
+      "name": "Al Ain",
+      "country": "United Arab Emirates",
+      "countryCode": "AE",
+      "region": "Emirate of Abu Dhabi",
+      "regionCode": "AZ",
+      "regionWdId": "Q187712",
+      "latitude": 24.2075,
+      "longitude": 55.744722222,
+      "population": 766936
+    },
+    {
+      "id": 3704017,
+      "wikiDataId": "Q3696182",
+      "type": "CITY",
+      "name": "Dibba Al-Fujairah",
+      "country": "United Arab Emirates",
+      "countryCode": "AE",
+      "region": "Emirate of Fujairah",
+      "regionCode": "FU",
+      "regionWdId": "Q4091",
+      "latitude": 25.616667,
+      "longitude": 56.266667,
+      "population": 41017
+    }
+  ],
+  "links": [
+    {
+      "rel": null,
+      "href": "/v1/geo/places?offset=0&limit=10"
+    },
+    {
+      "rel": null,
+      "href": "/v1/geo/places?offset=10&limit=10"
+    },
+    {
+      "rel": null,
+      "href": "/v1/geo/places?offset=27570&limit=10"
+    }
+  ],
+  "metadata": {
+    "currentOffset": 0,
+    "totalCount": 27573
+  }
+}

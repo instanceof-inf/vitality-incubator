@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 
@@ -16,7 +15,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class ApplicationConfig {
 
     public static final String BASE_URL = "http://geodb-free-service.wirefreethought.com/v1/";
-
     @Bean
     public GeodbApi geodbApi() {
         OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
